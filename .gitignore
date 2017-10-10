@@ -1,0 +1,7 @@
+.idea
+*~
+*.swp
+DIGIT_data/
+light_debris
+MNIST_data/
+tensorboard/
