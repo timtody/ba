@@ -53,7 +53,7 @@ class RNNModel:
             self.variable_summaries(self.l1_lateral, "l1_lateral_weights")
             self.variable_summaries(self.l2_lateral, "l2_lateral_weights")
         # top down weights
-        self.td_filter = self.weight_variable([self.image_dim1//2, self.image_dim1//2, 32, 64],, name="weights_top_down")
+        self.td_filter = self.weight_variable([self.image_dim1//2, self.image_dim1//2, 32, 64], name="weights_top_down")
         self.td_output_shape = tf.constant([self.image_dim1, self.image_dim1, 32])
         if self.top_down:
             self.variable_summaries(self.td_filter, "top_down_weights")
