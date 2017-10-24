@@ -31,7 +31,7 @@ class RNNModel:
             else:
                 format_val = ["../../", ""]
             self.dataset = digits.Digits("{}DIGIT_data/light_debris{}.mat".\
-            format(*format_val), split=.97)
+            format(*format_val), split=.93)
         else:
             raise BaseException("dataset not specified")
         self.imsize = self.dataset.train.images[0].shape[0]

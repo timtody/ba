@@ -1,12 +1,12 @@
 class BaseConfig:
     batch_size = 100
-    time_steps = 1
+    time_steps = 4
     lateral = False
     top_down = False
     iterations = 10000
     kernel_size = 3
     sum = False
-    eval_steps = 1
+    eval_steps = 6
     save = False
     from_checkpoint = False
 
@@ -80,15 +80,30 @@ class VanillaConfig(BaseDIGITConfig):
 class BConfig(BaseDIGITConfig):
     debris = False 
     save = True
+    
 
+class LoadBase(BConfig):
+    from_checkpoint = True
+    checkpoint_path = "/home/taylor/ba/checkpoints/B.ckpt"
+    
 
-class Exp2(BConfig):
-    lateral = True
+class LoadB(BConfig):
+    time_steps = 1
+    eval_steps = 1
+    debris = True
 
-
-class Exp3(VanillaConfig):
+    
+class LoadBL(LoadBase):
     debris = True
     lateral = True
+
+
+class LoadBT(LoadBase):
+    debris = True
     top_down = True
 
 
+class LoadBLT(LoadBase):
+    debris = True
+    top_down = True
+    lateral = True

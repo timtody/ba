@@ -1,26 +1,14 @@
 cd experiments
 cd 1
-sbatch -px-men experiment_1.sh
+sbatch -px-men LoadB
 cd ..
 cd 2
-sbatch -px-men experiment_2.sh
+sbatch -px-men LoadBL
 cd ..
 cd 3
-sbatch -px-men experiment_3.sh
+sbatch -px-men LoadBT
 cd ..
 cd 4
-sbatch -px-men experiment_4.sh
+sbatch -px-men LoadBLT
 cd ..
-cd 5
-sbatch -px-men experiment_5.sh
-cd ..
-cd 6
-sbatch -px-men experiment_6.sh
-cd ..
-
-
-
-
-
-
 watch 'squeue | tail -n 30'
