@@ -4,7 +4,11 @@ from log import Log
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
 class RNNModel:
-    def __init__(self, config):
+    def __init__(self, config, test=False):
+        self.from_checkpoint = config.from_checkpoint
+        if self.from_checkpoint:
+            self.checkpoint_path = config.checkpoint_path
+        self.save = config.save
         self.batch_size = config.batch_size
         self.time_steps = config.time_steps
         self.lateral =  config.lateral
@@ -15,12 +19,19 @@ class RNNModel:
         self.debris = config.debris
         self.sum = config.sum
         self.eval_steps = config.eval_steps
+        self.test = test
 
         if self.dataset_name == "mnist":
             self.dataset = input_data.read_data_sets("../../MNIST_data/", one_hot=True)
         elif self.dataset_name == "digits":
-            self.dataset = digits.Digits("../../DIGIT_data/light_debris{}.mat".\
-            format("_with_debris" if self.debris else ""), split=.97)
+            if self.test:
+                format_val = ["", "_with_debris"]
+            elif self.debris:
+                format_val = ["../../", "_with_debris"]
+            else:
+                format_val = ["../../", ""]
+            self.dataset = digits.Digits("{}DIGIT_data/light_debris{}.mat".\
+            format(*format_val), split=.97)
         else:
             raise BaseException("dataset not specified")
         self.imsize = self.dataset.train.images[0].shape[0]
@@ -35,23 +46,28 @@ class RNNModel:
         self.read = {'weights': self.weight_variable([(self.image_dim1**2)//16, 10]),
                     'biases': self.bias_variable([10])}
         # lateral weights
-        self.l1_lateral = self.weight_variable([self.kernel, self.kernel, 32, 32])
+        self.l1_lateral = self.weight_variable([self.kernel, self.kernel, 32, 32])     
         self.l2_lateral = self.weight_variable([self.kernel, self.kernel, 64, 64])
+        # monitoring
+        if self.lateral:
+            self.variable_summaries(self.l1_lateral, "l1_lateral_weights")
+            self.variable_summaries(self.l2_lateral, "l2_lateral_weights")
         # top down weights
         self.td_filter = self.weight_variable([self.image_dim1//2, self.image_dim1//2, 32, 64])
         self.td_output_shape = tf.constant([self.image_dim1, self.image_dim1, 32])
+        if self.top_down:
+            self.variable_summaries(self.td_filter, "top_down_weights")
         # dropout parmeter
         self.keep_prob = tf.placeholder(tf.float32)
         # prelu weights
         self.alphas_l1 = tf.Variable(tf.zeros([32]))
         self.alphas_l2 = tf.Variable(tf.zeros([64]))
-        self.variable_summaries(self.alphas_l1)
-        self.variable_summaries(self.alphas_l2)
+        self.variable_summaries(self.alphas_l1, "l1_prelu_weights")
+        self.variable_summaries(self.alphas_l2, "l2_prelu_weights")
         # build the layers
         self.build_graph()
         self.define_objective()
-        # run the graph
-        self.run()
+        
 
     def define_objective(self):
         with tf.name_scope('loss'):
@@ -86,23 +102,36 @@ class RNNModel:
 	
         # Merge all the summaries 
         self.merged = tf.summary.merge_all()
-        graph_location = "/home/taylor/ba/tensorboard/"       
+        graph_location = "/home/taylor/ba/tensorboard/" if not self.test else "/home/julius/workspace/ba/tensorboard/"
+
+
+        # recursive models
+        if self.lateral and self.top_down:
+            self.model = "BLT"  
+        elif self.lateral and not self.top_down:
+            self.model = "BL"
+        elif not self.lateral and self.top_down:
+            self.model = "BT"
+        # non recursive models
+        elif not self.lateral and not self.top_down and self.kernel == 3:
+            self.model = "B"
+        elif not self.lateral and not self.top_down and self.kernel > 3:
+            self.model = "BK"
+
         self.train_writer = tf.summary.FileWriter(graph_location+ \
-        "prelu__debris:{}_ds:{}_lt:{}_td:{}_time_depth:{}_sum:{}_ks:{}".format(self.debris, \
-        self.dataset_name, self.lateral, self.top_down, self.time_steps, self.sum, self.kernel))
+        "{}_train".format(self.model))
 
         self.train_writer.add_graph(tf.get_default_graph())
 
         self.test_writer = tf.summary.FileWriter(graph_location+ \
-        "prelu__debris:{}_ds:{}_lt:{}_td:{}_time_depth:{}_sum:{}".format(self.debris, \
-        self.dataset_name, self.lateral, self.top_down, self.time_steps, self.sum))
+        "{}_test".format(self.model))
 
         self.test_writer.add_graph(tf.get_default_graph())
 
 
-    def variable_summaries(self, var):
+    def variable_summaries(self, var, name):
         """Attach a lot of summaries to a Tensor (for TensorBoard visualization)."""
-        with tf.name_scope('summaries'):
+        with tf.name_scope('summaries_{}'.format(name)):
             mean = tf.reduce_mean(var)
             tf.summary.scalar('mean', mean)
             with tf.name_scope('stddev'):
@@ -155,12 +184,12 @@ class RNNModel:
                                 (self.deconv(self.layers[i-1]["conv2_pre"], \
                                 self.td_filter, self.td_output_shape) if i > 0 and self.top_down else 0)
             self.layer["conv"] = tf.nn.lrn(self.prelu(self.layer["conv_pre"], self.alphas_l1), alpha=0.0001)
-            #self.variable_summaries(self.layer["conv"])
+            self.variable_summaries(self.layer["conv"], "l1_conv_activation")
             self.layer["pool"] = self.max_pool_2x2(self.layer["conv"])
             self.layer["conv2_pre"] = self.conv2d(self.layer["pool"], self.conv_2['weights']) + self.conv_2['biases'] + \
                                 (self.conv2d(self.layers[i-1]["conv2_pre"], self.l2_lateral) if i > 0 and self.lateral else 0)
             self.layer["conv2"] = tf.nn.lrn(self.prelu(self.layer["conv2_pre"], self.alphas_l2), alpha=0.0001)
-            #self.variable_summaries(self.layer["conv2"])
+            self.variable_summaries(self.layer["conv2"], "l2_conv_activation")
             self.layer["pool2"] = self.max_pool_2x2(self.layer["conv2"])
             self.layer["global_max"] = tf.reduce_max(self.layer["pool2"], axis=[3], keep_dims=True)
             self.layer["flat"] = tf.reshape(self.layer["global_max"], [-1, self.image_dim1//4 * self.image_dim1//4])
@@ -172,19 +201,39 @@ class RNNModel:
 #	tf.nn.relu(input) - tf.nn.relu(-input) * alpha
       return tf.nn.relu(input) + tf.multiply(alphas, (input - tf.abs(input))) * 0.5
 
+    def get_image_foreach_label(self):
+        images = []
+        labels = []
+        i = 0
+        while len(labels) < 10:
+            label = self.dataset.test.labels[i]
+            image = self.dataset.test.images[i]
+            if label not in labels:
+                labels.append(label)
+                images.append(image)
+            i += 1
+        return images, labels
+
     def run(self):
+        saver = tf.train.Saver()
         with tf.Session() as sess:
-            sess.run(tf.global_variables_initializer())
+            if self.from_checkpoint:
+                saver.restore(sess, self.checkpoint_path)
+            else:
+                sess.run(tf.global_variables_initializer())
             print_frequency = 200
             for i in range(self.iterations):
                 batch = self.dataset.train.next_batch(self.batch_size)
                 if i % print_frequency == 0:
                     summary = sess.run([self.merged], feed_dict={
-                        self.x: self.dataset.test.images[-4000:], self.y_: self.dataset.test.labels[-4000:], self.keep_prob: 1.0})
+                        self.x: self.dataset.test.images, self.y_: self.dataset.test.labels, self.keep_prob: 1.0})
                     self.test_writer.add_summary(summary[0], i)
                 
                 _, summary = sess.run([self.train_step, self.merged], feed_dict={self.x: batch[0], self.y_: batch[1], self.keep_prob: 0.5})
                 self.train_writer.add_summary(summary, i)
+            if self.save:
+                saver.save(sess, "/home/taylor/ba/checkpoints/{}.ckpt".format(self.model))
+
 
             
         

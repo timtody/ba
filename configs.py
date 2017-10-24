@@ -1,12 +1,15 @@
 class BaseConfig:
     batch_size = 100
-    time_steps = 4
+    time_steps = 1
     lateral = False
     top_down = False
-    iterations = 15000
-    kernel_size = 4
+    iterations = 10000
+    kernel_size = 3
     sum = False
-    eval_steps = 6
+    eval_steps = 1
+    save = False
+    from_checkpoint = False
+
 
 class BaseMNISTConfig(BaseConfig):
     dataset = "mnist"
@@ -74,11 +77,12 @@ class VanillaConfig(BaseDIGITConfig):
     time_steps = 3
 
 
-class Exp1(VanillaConfig):
-    debris = True 
+class BConfig(BaseDIGITConfig):
+    debris = False 
+    save = True
 
 
-class Exp2(Exp1):
+class Exp2(BConfig):
     lateral = True
 
 
