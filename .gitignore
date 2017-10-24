@@ -1,4 +1,5 @@
 .idea
+_tensorboard
 *~
 *.swp
 DIGIT_data/

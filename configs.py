@@ -3,9 +3,10 @@ class BaseConfig:
     time_steps = 4
     lateral = False
     top_down = False
-    iterations = 40000
-    kernel_size = 3
+    iterations = 15000
+    kernel_size = 4
     sum = False
+    eval_steps = 6
 
 class BaseMNISTConfig(BaseConfig):
     dataset = "mnist"
