@@ -80,6 +80,9 @@ class VanillaConfig(BaseDIGITConfig):
 class BConfig(BaseDIGITConfig):
     debris = False 
     save = True
+    iterations = 2000
+    time_steps = 1
+    eval_steps = 1
     
 
 class LoadBase(BConfig):

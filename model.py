@@ -39,35 +39,71 @@ class RNNModel:
         self.x = tf.placeholder('float', [None, self.imsize])
         self.y_ = tf.placeholder('float', [None, 10])
         # bottom up weights
-        self.conv_1 = {'weights': self.weight_variable([self.kernel, self.kernel, 1, 32], 9),
-                    'biases': self.bias_variable([32])}
-        self.conv_2 = {'weights': self.weight_variable([self.kernel, self.kernel, 32, 64], 9*32),
-                    'biases': self.bias_variable([64])}
-        self.read = {'weights': self.weight_variable([(self.image_dim1**2)//16, 10]),
-                    'biases': self.bias_variable([10])}
+        self.conv_1 = {'weights': self.weight_variable([self.kernel, self.kernel, 1, 32], 9, name="weights_conv_1"),
+                    'biases': self.bias_variable([32], name="bias_conv_1")}
+        self.conv_2 = {'weights': self.weight_variable([self.kernel, self.kernel, 32, 64], 9*32, name="weights_conv_2"),
+                    'biases': self.bias_variable([64], name="bias_conv_2")}
+        self.read = {'weights': self.weight_variable([(self.image_dim1**2)//16, 10], name="weights_read"),
+                    'biases': self.bias_variable([10], name="bias_read")}
         # lateral weights
-        self.l1_lateral = self.weight_variable([self.kernel, self.kernel, 32, 32])     
-        self.l2_lateral = self.weight_variable([self.kernel, self.kernel, 64, 64])
+        self.l1_lateral = self.weight_variable([self.kernel, self.kernel, 32, 32], name="weights_lateral_1")     
+        self.l2_lateral = self.weight_variable([self.kernel, self.kernel, 64, 64], name="weights_lateral_2")
         # monitoring
         if self.lateral:
             self.variable_summaries(self.l1_lateral, "l1_lateral_weights")
             self.variable_summaries(self.l2_lateral, "l2_lateral_weights")
         # top down weights
-        self.td_filter = self.weight_variable([self.image_dim1//2, self.image_dim1//2, 32, 64])
+        self.td_filter = self.weight_variable([self.image_dim1//2, self.image_dim1//2, 32, 64],, name="weights_top_down")
         self.td_output_shape = tf.constant([self.image_dim1, self.image_dim1, 32])
         if self.top_down:
             self.variable_summaries(self.td_filter, "top_down_weights")
         # dropout parmeter
         self.keep_prob = tf.placeholder(tf.float32)
         # prelu weights
-        self.alphas_l1 = tf.Variable(tf.zeros([32]))
-        self.alphas_l2 = tf.Variable(tf.zeros([64]))
+        self.alphas_l1 = tf.Variable(tf.zeros([32]), name="weights_alphas_1")
+        self.alphas_l2 = tf.Variable(tf.zeros([64]), name="weights_alphas_2")
         self.variable_summaries(self.alphas_l1, "l1_prelu_weights")
         self.variable_summaries(self.alphas_l2, "l2_prelu_weights")
         # build the layers
         self.build_graph()
         self.define_objective()
-        
+
+    def variable_summaries(self, var, name):
+        """Attach a lot of summaries to a Tensor (for TensorBoard visualization)."""
+        with tf.name_scope('summaries_{}'.format(name)):
+            mean = tf.reduce_mean(var)
+            tf.summary.scalar('mean', mean)
+            with tf.name_scope('stddev'):
+                stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))
+            tf.summary.scalar('stddev', stddev)
+            tf.summary.scalar('max', tf.reduce_max(var))
+            tf.summary.scalar('min', tf.reduce_min(var))
+            tf.summary.histogram('histogram', var)
+
+    def conv2d(self, x, W):
+        return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
+
+    def deconv(self, x, filter, shape):
+        input_shape = tf.shape(x)
+        batch_size = input_shape[0]
+        output_shape = tf.stack([batch_size, shape[0], shape[1], shape[2]])
+        return tf.nn.conv2d_transpose(x, filter, output_shape, [1, 2, 2, 1], padding='SAME')
+
+    def max_pool_2x2(self, x):
+        return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
+                            strides=[1, 2, 2, 1], padding='SAME')
+
+    def weight_variable(self, shape, n=0, name=""):
+        if n != 0:
+            stddev = tf.sqrt(2/n)
+        else:
+            stddev = 0.1
+        initial = tf.truncated_normal(shape, stddev=stddev)
+        return tf.Variable(initial, name=name)
+
+    def bias_variable(self, shape, name=""):
+        initial = tf.constant(0.1, shape=shape)
+        return tf.Variable(initial, name=name)
 
     def define_objective(self):
         with tf.name_scope('loss'):
@@ -104,7 +140,6 @@ class RNNModel:
         self.merged = tf.summary.merge_all()
         graph_location = "/home/taylor/ba/tensorboard/" if not self.test else "/home/julius/workspace/ba/tensorboard/"
 
-
         # recursive models
         if self.lateral and self.top_down:
             self.model = "BLT"  
@@ -128,48 +163,6 @@ class RNNModel:
 
         self.test_writer.add_graph(tf.get_default_graph())
 
-
-    def variable_summaries(self, var, name):
-        """Attach a lot of summaries to a Tensor (for TensorBoard visualization)."""
-        with tf.name_scope('summaries_{}'.format(name)):
-            mean = tf.reduce_mean(var)
-            tf.summary.scalar('mean', mean)
-            with tf.name_scope('stddev'):
-                stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))
-            tf.summary.scalar('stddev', stddev)
-            tf.summary.scalar('max', tf.reduce_max(var))
-            tf.summary.scalar('min', tf.reduce_min(var))
-            tf.summary.histogram('histogram', var)
-
-
-    def conv2d(self, x, W):
-        return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
-
-
-    def deconv(self, x, filter, shape):
-        input_shape = tf.shape(x)
-        batch_size = input_shape[0]
-        output_shape = tf.stack([batch_size, shape[0], shape[1], shape[2]])
-        return tf.nn.conv2d_transpose(x, filter, output_shape, [1, 2, 2, 1], padding='SAME')
-
-
-    def max_pool_2x2(self, x):
-        return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
-                            strides=[1, 2, 2, 1], padding='SAME')
-
-
-    def weight_variable(self, shape, n=0):
-        if n != 0:
-            stddev = tf.sqrt(2/n)
-        else:
-            stddev = 0.1
-        initial = tf.truncated_normal(shape, stddev=stddev)
-        return tf.Variable(initial)
-
-
-    def bias_variable(self, shape):
-        initial = tf.constant(0.1, shape=shape)
-        return tf.Variable(initial)
 
     def build_graph(self):
         with tf.name_scope('reshape'):
@@ -215,22 +208,28 @@ class RNNModel:
         return images, labels
 
     def run(self):
-        saver = tf.train.Saver()
+        # gather relevant variables
+        saver = tf.train.Saver(self.conv_1["weights"], self.conv_1["biases"], \
+        self.conv_2["weights"], self.conv_2["biases"], self.read["weights"], \
+        self.read["biases"], self.l1_lateral, self.l2_lateral, self.td_filter, \
+        self.alphas_l1, self.alphas_l2)
+
         with tf.Session() as sess:
+            # todo: fetch unitialized variables, 
+            sess.run(tf.global_variables_initializer())
             if self.from_checkpoint:
                 saver.restore(sess, self.checkpoint_path)
-            else:
-                sess.run(tf.global_variables_initializer())
-            print_frequency = 200
+            eval_test_frequency = 200
             for i in range(self.iterations):
                 batch = self.dataset.train.next_batch(self.batch_size)
-                if i % print_frequency == 0:
+                if i % eval_test_frequency == 0:
                     summary = sess.run([self.merged], feed_dict={
                         self.x: self.dataset.test.images, self.y_: self.dataset.test.labels, self.keep_prob: 1.0})
                     self.test_writer.add_summary(summary[0], i)
                 
                 _, summary = sess.run([self.train_step, self.merged], feed_dict={self.x: batch[0], self.y_: batch[1], self.keep_prob: 0.5})
                 self.train_writer.add_summary(summary, i)
+            # store variables
             if self.save:
                 saver.save(sess, "/home/taylor/ba/checkpoints/{}.ckpt".format(self.model))
 
