@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/taylor/ba/checkpoints/B.ckpt"
+all_model_checkpoint_paths: "/home/taylor/ba/checkpoints/B.ckpt"
