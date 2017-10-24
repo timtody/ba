@@ -1,5 +1,6 @@
 .idea
 _tensorboard
+tensorBIN
 *~
 *.swp
 DIGIT_data/
