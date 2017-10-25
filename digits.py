@@ -32,5 +32,5 @@ class Test:
     def __init__(self, images, labels):
         self.images = images.reshape(-1, 1024) / 255
         self.labels = list(map(lambda x: [1 if i == x else 0 for i in range(10)], labels))
-        print(len(self.images), len(self.labels))
+        
 

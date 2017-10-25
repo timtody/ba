@@ -113,3 +113,7 @@ class LoadBLT(LoadBase):
 
 class noLoadBLT(LoadBLT):
     from_checkpoint = False
+
+
+class TestConf(BaseDIGITConfig):
+    iterations = 10
