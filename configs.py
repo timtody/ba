@@ -3,7 +3,7 @@ class BaseConfig:
     time_steps = 4
     lateral = False
     top_down = False
-    iterations = 10000
+    iterations = 12000
     kernel_size = 3
     sum = False
     eval_steps = 6
@@ -81,8 +81,8 @@ class BConfig(BaseDIGITConfig):
     debris = False 
     save = True
     iterations = 2000
-    time_steps = 1
-    eval_steps = 1
+    time_steps = 4
+    eval_steps = 5
     
 
 class LoadBase(BConfig):
@@ -110,3 +110,6 @@ class LoadBLT(LoadBase):
     debris = True
     top_down = True
     lateral = True
+
+class noLoadBLT(LoadBLT):
+    from_checkpoint = False

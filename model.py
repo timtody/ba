@@ -154,12 +154,12 @@ class RNNModel:
             self.model = "BK"
 
         self.train_writer = tf.summary.FileWriter(graph_location+ \
-        "{}_train".format(self.model))
+        "noload_{}_train".format(self.model))
 
         self.train_writer.add_graph(tf.get_default_graph())
 
         self.test_writer = tf.summary.FileWriter(graph_location+ \
-        "{}_test".format(self.model))
+        "noload_{}_test".format(self.model))
 
         self.test_writer.add_graph(tf.get_default_graph())
 
@@ -209,10 +209,10 @@ class RNNModel:
 
     def run(self):
         # gather relevant variables
-        saver = tf.train.Saver(self.conv_1["weights"], self.conv_1["biases"], \
+        saver = tf.train.Saver(var_list=[self.conv_1["weights"], self.conv_1["biases"], \
         self.conv_2["weights"], self.conv_2["biases"], self.read["weights"], \
         self.read["biases"], self.l1_lateral, self.l2_lateral, self.td_filter, \
-        self.alphas_l1, self.alphas_l2)
+        self.alphas_l1, self.alphas_l2])
 
         with tf.Session() as sess:
             # todo: fetch unitialized variables, 
