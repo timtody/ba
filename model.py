@@ -143,6 +143,8 @@ class RNNModel:
         # recursive models
         if self.lateral and self.top_down:
             self.model = "BLT"  
+        if self.lateral and self.top_down and not self.from_checkpoint:
+            self.model = "nlBLT"
         elif self.lateral and not self.top_down:
             self.model = "BL"
         elif not self.lateral and self.top_down:
@@ -154,12 +156,12 @@ class RNNModel:
             self.model = "BK"
 
         self.train_writer = tf.summary.FileWriter(graph_location+ \
-        "noload_{}_train".format(self.model))
+        "load_{}_train".format(self.model))
 
         self.train_writer.add_graph(tf.get_default_graph())
 
         self.test_writer = tf.summary.FileWriter(graph_location+ \
-        "noload_{}_test".format(self.model))
+        "load_{}_test".format(self.model))
 
         self.test_writer.add_graph(tf.get_default_graph())
 

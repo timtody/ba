@@ -11,4 +11,8 @@ cd ..
 cd 4
 sbatch -px-men LoadBLT
 cd ..
+cd 5
+sbatch -px-men noloadBLT
+cd ..
+
 watch 'squeue | tail -n 30'
