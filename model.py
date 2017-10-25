@@ -231,6 +231,31 @@ class RNNModel:
                 
                 _, summary = sess.run([self.train_step, self.merged], feed_dict={self.x: batch[0], self.y_: batch[1], self.keep_prob: 0.5})
                 self.train_writer.add_summary(summary, i)
+
+            # evaluate pixel maps with fully trained network
+            self.V = self.weight_variable([1, 32, 32, 32], name="V")
+            sess.run(self.V.initializer)
+            ix = 32
+            iy = 32
+            self.V = tf.slice(self.layers[self.time_steps]["conv"],(0,0,0,0),(1,-1,-1,-1)) #V[0,...]
+            self.V = tf.reshape(self.V,(iy,ix,32))
+            ix += 4
+            iy += 4
+            self.V = tf.image.resize_image_with_crop_or_pad(self.V, 36, 36)
+            cy = 4
+            cx = 8
+            self.V = tf.reshape(self.V,(iy,ix,cy,cx)) 
+            self.V = tf.transpose(self.V,(2,0,3,1)) #cy,iy,cx,ix
+            self.V = tf.reshape(self.V,(1,cy*iy,cx*ix,1))
+
+            images, labels = self.get_image_foreach_label()
+            for im, lb in zip(images, labels):
+                im.shape = (1, 1024)  
+                v = sess.run([self.V], feed_dict={self.x: im})
+                summary_op = tf.summary.image("img_label_{}".format(np.argmax(lb)), v[0])
+                summ = sess.run(summary_op)
+                self.test_writer.add_summary(summ, np.argmax(lb))
+
             # store variables
             if self.save:
                 saver.save(sess, "/home/taylor/ba/checkpoints/{}.ckpt".format(self.model))
