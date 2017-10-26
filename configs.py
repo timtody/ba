@@ -25,7 +25,7 @@ class BaseDIGITConfig(BaseConfig):
 class BConfig(BaseDIGITConfig):
     debris = False 
     save = True
-    iterations = 14000
+    iterations = 15000
     
 
 class LoadBase(BConfig):
