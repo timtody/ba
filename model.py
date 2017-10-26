@@ -20,6 +20,8 @@ class RNNModel:
         self.sum = config.sum
         self.eval_steps = config.eval_steps
         self.test = test
+        self.model = config.model
+        self.learning_rate = config.learning_rate
 
         if self.dataset_name == "mnist":
             self.dataset = input_data.read_data_sets("../../MNIST_data/", one_hot=True)
@@ -46,8 +48,8 @@ class RNNModel:
         self.read = {'weights': self.weight_variable([(self.image_dim1**2)//16, 10], name="weights_read"),
                     'biases': self.bias_variable([10], name="bias_read")}
         # lateral weights
-        self.l1_lateral = self.weight_variable([self.kernel, self.kernel, 32, 32], name="weights_lateral_1")     
-        self.l2_lateral = self.weight_variable([self.kernel, self.kernel, 64, 64], name="weights_lateral_2")
+        self.l1_lateral = self.weight_variable([self.kernel, self.kernel, 32, 32], 9*32, name="weights_lateral_1")     
+        self.l2_lateral = self.weight_variable([self.kernel, self.kernel, 64, 64], 9*64, name="weights_lateral_2")
         # monitoring
         if self.lateral:
             self.variable_summaries(self.l1_lateral, "l1_lateral_weights")
@@ -119,7 +121,7 @@ class RNNModel:
                     for layer in range(self.time_steps)])
         tf.summary.scalar('cross_entropy', self.cross_entropy)
         with tf.name_scope('adam_optimizer'):
-            self.train_step = tf.train.AdamOptimizer(1e-2).\
+            self.train_step = tf.train.AdamOptimizer(self.learning_rate).\
                 minimize(self.cross_entropy)
         with tf.name_scope('unrolled_acc'):
                 self.outputs_ = [self.layers[layer]["yHat"] for layer in self.layers]
@@ -140,21 +142,6 @@ class RNNModel:
         self.merged = tf.summary.merge_all()
         graph_location = "/home/taylor/ba/tensorboard/" if not self.test else "/home/julius/workspace/ba/save_tensorboard/"
 
-        # recursive models
-        if self.lateral and self.top_down:
-            self.model = "BLT"  
-        if self.lateral and self.top_down and not self.from_checkpoint:
-            self.model = "nlBLT"
-        elif self.lateral and not self.top_down:
-            self.model = "BL"
-        elif not self.lateral and self.top_down:
-            self.model = "BT"
-        # non recursive models
-        elif not self.lateral and not self.top_down and self.kernel == 3:
-            self.model = "B"
-        elif not self.lateral and not self.top_down and self.kernel > 3:
-            self.model = "BK"
-
         self.train_writer = tf.summary.FileWriter(graph_location+ \
         "{}_train".format(self.model))
 
@@ -167,6 +154,7 @@ class RNNModel:
 
 
     def build_graph(self):
+        """builds the graph dynamically"""
         with tf.name_scope('reshape'):
             # image transformation
             self.image = tf.reshape(self.x, [-1, self.image_dim1, self.image_dim1, 1])
@@ -210,6 +198,7 @@ class RNNModel:
         return images, labels
 
     def run(self):
+        """runs the graph with config file passed from constructor"""
         # gather relevant variables
         saver = tf.train.Saver(var_list=[self.conv_1["weights"], self.conv_1["biases"], \
         self.conv_2["weights"], self.conv_2["biases"], self.read["weights"], \
@@ -240,7 +229,7 @@ class RNNModel:
                 saver.save(sess, "/home/taylor/ba/checkpoints/{}_final.ckpt".format(self.model))
 
     def evaluate_feature_maps(self, sess, layer=1):
-        # evaluate pixel maps with fully trained network
+        """evaluate pixel maps with fully trained network (currently only layers 1 and 2)"""
         channels = 32 if layer == 1 else 64
         self.V = self.weight_variable([1, 32, 32, channels], name="V")
         sess.run(self.V.initializer)

@@ -1,14 +1,16 @@
 class BaseConfig:
     batch_size = 100
-    time_steps = 4
+    time_steps = 1
     lateral = False
     top_down = False
     iterations = 12000
     kernel_size = 3
     sum = False
-    eval_steps = 6
+    eval_steps = 1
     save = False
     from_checkpoint = False
+    model = "base"
+    learning_rate = 7e-2
 
 
 class BaseMNISTConfig(BaseConfig):
@@ -23,50 +25,53 @@ class BaseDIGITConfig(BaseConfig):
 class BConfig(BaseDIGITConfig):
     debris = False 
     save = True
-    iterations = 2000
-    time_steps = 4
-    eval_steps = 5
+    iterations = 14000
     
 
 class LoadBase(BConfig):
     from_checkpoint = False
-#    checkpoint_path = "/home/taylor/ba/checkpoints/B.ckpt"
     
+
+class LoadB_wodeb(BConfig):
+    time_steps = 1
+    eval_steps = 1
+    debris = False
+    model = "saveB_nodebris"
 
 class LoadB(BConfig):
     time_steps = 1
     eval_steps = 1
-    iterations = 25000
-    debris = False
+    debris = True
+    model = "saveB"
 
     
 class LoadBL(LoadBase):
     time_steps = 3
     eval_steps = 3
-    iterations = 25000
     debris = True
     lateral = True
+    model = "saveBL"
 
 
 class LoadBT(LoadBase):
     time_steps = 3
     eval_steps = 3
-    iterations = 25000
     debris = True
     top_down = True
+    model = "saveBT"
 
 
 class LoadBLT(LoadBase):
     time_steps = 3
     eval_steps = 3
-    iterations = 25000
     debris = True
     top_down = True
     lateral = True
-
-class noLoadBLT(LoadBLT):
-    from_checkpoint = False
+    model = "saveBLT"
 
 
-class TestConf(BaseDIGITConfig):
-    iterations = 10
+class LoadBK(LoadBase):
+    debris = True
+    model = "saveBK"
+    kernel_size = 5
+
