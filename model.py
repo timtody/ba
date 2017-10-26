@@ -156,12 +156,12 @@ class RNNModel:
             self.model = "BK"
 
         self.train_writer = tf.summary.FileWriter(graph_location+ \
-        "load_{}_train".format(self.model))
+        "nodeb{}_train".format(self.model))
 
         self.train_writer.add_graph(tf.get_default_graph())
 
         self.test_writer = tf.summary.FileWriter(graph_location+ \
-        "load_{}_test".format(self.model))
+        "nodeb{}_test".format(self.model))
 
         self.test_writer.add_graph(tf.get_default_graph())
 
@@ -244,13 +244,13 @@ class RNNModel:
         channels = 32 if layer == 1 else 64
         self.V = self.weight_variable([1, 32, 32, channels], name="V")
         sess.run(self.V.initializer)
-        ix = 32
-        iy = 32
-        self.V = tf.slice(self.layers[self.time_steps]["conv{}".format("" if layer == 1 else "2")],(0,0,0,0),(1,-1,-1,-1)) #V[0,...]
+        ix = 32 if layer == 1 else 16
+        iy = 32 if layer == 1 else 16
+        self.V = tf.slice(self.layers[self.time_steps-1]["conv{}".format("" if layer == 1 else "2")],(0,0,0,0),(1,-1,-1,-1)) #V[0,...]
         self.V = tf.reshape(self.V,(iy,ix,channels))
-        ix += 4
-        iy += 4
-        self.V = tf.image.resize_image_with_crop_or_pad(self.V, 36, 36)
+        ix += 4 if layer == 1 else 2
+        iy += 4 if layer == 1 else 2
+        self.V = tf.image.resize_image_with_crop_or_pad(self.V, ix, iy)
         cy = 4 if layer == 1 else 8
         cx = 8
         self.V = tf.reshape(self.V,(iy,ix,cy,cx)) 
