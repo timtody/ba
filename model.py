@@ -138,7 +138,7 @@ class RNNModel:
 	
         # Merge all the summaries 
         self.merged = tf.summary.merge_all()
-        graph_location = "/home/taylor/ba/tensorboard/" if not self.test else "/home/julius/workspace/ba/tensorboard/"
+        graph_location = "/home/taylor/ba/tensorboard/" if not self.test else "/home/julius/workspace/ba/save_tensorboard/"
 
         # recursive models
         if self.lateral and self.top_down:
@@ -156,12 +156,12 @@ class RNNModel:
             self.model = "BK"
 
         self.train_writer = tf.summary.FileWriter(graph_location+ \
-        "nodeb{}_train".format(self.model))
+        "{}_train".format(self.model))
 
         self.train_writer.add_graph(tf.get_default_graph())
 
         self.test_writer = tf.summary.FileWriter(graph_location+ \
-        "nodeb{}_test".format(self.model))
+        "{}_test".format(self.model))
 
         self.test_writer.add_graph(tf.get_default_graph())
 
@@ -237,7 +237,7 @@ class RNNModel:
             self.evaluate_feature_maps(sess, layer=2)
             # store variables
             if self.save:
-                saver.save(sess, "/home/taylor/ba/checkpoints/{}.ckpt".format(self.model))
+                saver.save(sess, "/home/taylor/ba/checkpoints/{}_final.ckpt".format(self.model))
 
     def evaluate_feature_maps(self, sess, layer=1):
         # evaluate pixel maps with fully trained network
