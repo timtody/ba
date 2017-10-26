@@ -1,6 +1,5 @@
 import tensorflow as tf
 import digits, tempfile, time, sys, os
-from log import Log
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
 class RNNModel:
@@ -108,6 +107,8 @@ class RNNModel:
         return tf.Variable(initial, name=name)
 
     def define_objective(self):
+        """defines all objective functions (loss, train_step, correct predictions, acccuracy).
+        Also manages tf.summary writers."""
         with tf.name_scope('loss'):
             if sum:
                 self.cross_entropy = tf.reduce_sum(
