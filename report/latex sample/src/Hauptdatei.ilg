@@ -1,0 +1,7 @@
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Hauptdatei.nlo...
+!! Input index error (file = Hauptdatei.nlo, line = 1):
+   -- Unknown index keyword \nomenclatureentry.
+done (0 entries accepted, 1 rejected).
+Nothing written in Hauptdatei.ind.
+Transcript written in Hauptdatei.ilg.

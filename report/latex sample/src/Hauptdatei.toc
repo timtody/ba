@@ -1,15 +1,29 @@
 \contentsline {section}{Abbildungsverzeichnis}{5}{section*.4}
 \contentsline {section}{Tabellenverzeichnis}{5}{section*.5}
 \contentsline {section}{Listingverzeichnis}{5}{section*.6}
-\contentsline {section}{Abk\IeC {\"u}rzungsverzeichnis}{5}{section*.7}
-\contentsline {section}{\numberline {1}Einleitung}{9}{section.1}
-\contentsline {section}{\numberline {2}Materialien und Methoden}{9}{section.2}
-\contentsline {subsection}{\numberline {2.1}Generatives Modell f\IeC {\"u}r Stimuli}{9}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Modelle}{9}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Implementierung}{9}{subsubsection.2.2.1}
-\contentsline {section}{\numberline {3}Ergebnisse}{9}{section.3}
-\contentsline {section}{\numberline {4}Diskussion}{9}{section.4}
-\contentsline {section}{\numberline {5}Danksagung}{9}{section.5}
-\contentsline {section}{Literaturverzeichnis}{12}{lstnumber.2.33}
-\contentsline {section}{Anhang}{13}{section*.9}
-\contentsline {section}{Eidesstattliche Erkl\IeC {\"a}rung}{13}{section*.10}
+\contentsline {section}{Abkürzungsverzeichnis}{6}{section*.7}
+\contentsline {section}{\numberline {1}Introduction}{7}{section.1}
+\contentsline {section}{\numberline {2}Background}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Supervised Learning}{7}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Linear Models}{7}{subsubsection.2.1.1}
+\contentsline {subsection}{\numberline {2.2}Neuronale Netze}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Convolutional Neural Networks}{9}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Recurrent Neural Networks}{9}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Unrolling Recurrent Netowrks}{9}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Backpropagation}{9}{subsection.2.6}
+\contentsline {section}{\numberline {3}Materials and Methods}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Generatives Modell für Stimuli}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Models}{10}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Implementation}{11}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Recurrent Convolution Layers}{11}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Training}{13}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Error Measurement}{13}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Backpropagation Through Time}{13}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Truncated Backpropagation Through Time}{13}{subsection.3.4}
+\contentsline {section}{\numberline {4}Ergebnisse}{13}{section.4}
+\contentsline {subsection}{\numberline {4.1}Performance changes under varying levels of occlusion}{14}{subsection.4.1}
+\contentsline {section}{\numberline {5}Diskussion}{14}{section.5}
+\contentsline {section}{\numberline {6}Danksagung}{14}{section.6}
+\contentsline {section}{Literaturverzeichnis}{15}{section.6}
+\contentsline {section}{Anhang}{16}{section*.8}
+\contentsline {section}{Eidesstattliche Erklärung}{16}{section*.9}

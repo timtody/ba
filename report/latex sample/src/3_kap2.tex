@@ -1,1 +1,46 @@
 \section{Ergebnisse}\label{Ergebnisse}
+All models were trained and tested to investigate how recursion changes performance when dealing which occluded stimuli. Three different data sets have been used, each containing single digits targets to be recognized. The amount of occlusion varies between 10 fragments (light occlusion), 30 fragments (medium occlusion) and 50 fragments (heavy occlusion) among data sets. Under light occlusion BL seemed to be performing best with a mere 0.035\% classification error. Under medium and heavy occlusion BT and BLT outperformed all other networks.\\
+\\
+\begin{tabular}{l*{6}{c}r}
+	Model              & B & B-K & BL & BT & BLT  & BLT-PReLU \\
+	\hline
+	Light Debris 		& 0.652 & 0.059 & 0.035 & 0.062 & 0.049 & 0.063\\
+	Medium Debris            & 0.767 & 0.691 & 0.628 & 0.210 &  0.256 & 0.254\\
+	Heavy Debris           & 0.781 & 0.473 & 0.680 & 0.255 &  0.316 & 0.319\\
+\end{tabular}
+\\
+\subsection{Performance changes under varying levels of occlusion}
+
+\pgfplotstableread{
+	0 0.652 0.767   0.781  
+	1 0.059 0.691   0.788
+	2 0.035 0.628   0.680   
+	3 0.062 0.210   0.255   
+	4 0.049 0.25	0.316   
+	5 0.063 0.254   0.319   
+}\dataset
+\begin{tikzpicture}
+\begin{axis}[ybar,
+width=.9\textwidth,
+ymin=0,
+ymax=1,        
+ylabel={Classification Error (\%)},
+xtick=data,
+xticklabels = {
+	B,
+	B-K,
+	BL,
+	BT,
+	BLT,
+	BLT-PReLU
+},
+major x tick style = {opacity=0},
+minor x tick num = 1,
+minor tick length=2ex,
+]
+\addplot[draw=black,fill=blue!10] table[x index=0,y index=1] \dataset; %Light
+\addplot[draw=black,fill=blue!45] table[x index=0,y index=2] \dataset; %Medium
+\addplot[draw=black,fill=blue!100] table[x index=0,y index=3] \dataset; %Heavy
+\legend{Light,Medium,Heavy}
+\end{axis}
+\end{tikzpicture}

@@ -1,3 +1,4 @@
+% !TeX program = lualatex
 % allgem. Dokumentenformat
 \documentclass[a4paper,12pt,headsepline]{scrartcl}
 \input{latex_einstellungen/variablen}
@@ -11,6 +12,7 @@
 
 % deutsche Silbentrennung
 \usepackage[ngerman]{babel}
+\usepackage{amsmath}
 
 % Eurozeichen einbinden
 \usepackage[right]{eurosym}
@@ -26,10 +28,18 @@
 
 % floatende Bilder ermöglichen
 %\usepackage{floatflt}
-
+\usepackage{tikz}
+    \usetikzlibrary{positioning}
+    
+    \tikzset{basic/.style={draw,fill=blue!20,text width=1em,text badly centered}}
+    \tikzset{input/.style={basic,circle}}
+    \tikzset{weights/.style={basic,rectangle}}
+    \tikzset{functions/.style={basic,circle,fill=blue!10}}
 % mehrseitige Tabellen ermöglichen
 \usepackage{longtable}
-
+\usetikzlibrary{graphdrawing}
+\usetikzlibrary{graphs}
+\usegdlibrary{trees}
 % Unterstützung für Schriftarten
 %\newcommand{\changefont}[3]{ 
 %\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
@@ -89,6 +99,7 @@
 
 % für Stichwortverzeichnis
 \usepackage{makeidx}
+\usepackage{pgfplots}
 
 % für Listings
 \usepackage{listings}
@@ -110,6 +121,7 @@
 \makenomenclature
 %\makeglossary
 
+
 % Abkürzungsverzeichnis TeTEX Version
 % \usepackage[german]{nomencl}
 % \makenomenclature
@@ -127,6 +139,7 @@
 
 \begin{document}
 % hier werden die Trennvorschläge inkludiert
+
 \input{latex_einstellungen/trennung}
 
 %Schriftart Helvetica
@@ -213,8 +226,6 @@
 % Definiert Stegbreite bei zweispaltigem Layout
 \setlength{\columnsep}{25pt}
 
-%%%%%%% EINLEITUNG %%%%%%%%%%%%
-%\twocolumn
 \newpage
 \fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
 
@@ -223,6 +234,7 @@
 
 % einzelne Kapitel
 \input{1_einleitung}
+\input{background}
 
 \input{2_kap1}
 
@@ -234,7 +246,7 @@
 
 \input{8_fazit}
 
-\input{beispiel}
+
 
 \onecolumn
 % einfacher Zeilenabstand

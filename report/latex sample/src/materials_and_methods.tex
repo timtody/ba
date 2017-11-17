@@ -1,4 +1,4 @@
-\section{Materials and Methods}\label{Materialien und Methoden}
+\section{Materials and Methods}\label{materials_and_methods}
 \subsection{Generatives Modell für Stimuli}
 Um die Effekte von Rekursion auf das klassifizieren von okkludierten Objekten zu untersuchen, wurde ein möglichst einfaches Grundproblem betrachtet. Die Klassifizierung von Ziffern ist ein gut untersuchtes Machine Learning Problem, in dem übermenschliche Performance erreicht werden kann. Allgemein gilt das sehr ähnliche MNIST-Datenset gemeinhin als das "Hello world!" des Machine Learning. Durch die Einfachheit der Aufgabe, können die Auswirkungen von Rekursion isoliert von anderen Herausforderungen betrachtet werden. 
 \subsection{Models}
@@ -34,10 +34,4 @@ with n = 5, c = 1, $\alpha$ = 10-4, and $\beta$ = 0.5 with the sum over n adjace
 \begin{align*}
 	\omega_{l, t} = lrn(r(p_{l, t, m}))
 \end{align*}
-\subsection{Training}
-\subsubsection{Error Measurement}
-Cross Entropy and training data structure goes HERE
-\subsubsection{Backpropagation Through Time}
-Usually in feedforward neural networks, Backpropagation is used for training. This refers to the mathematical method of calculating derivatives of the network funciton in regard to a given input by using the chain rule. These derivatives are then used to update network weights and hence minimize training error. Since in recurrent networks, the output also depends on network states of earlier time steps, standard Backpropagation cannot be applied here. Backpropagation Through Time is the application of Backpropagation to recurrent neural networks. This works by unrolling the network across all time steps and passing one input to one copy of the network. Errors are calculated for all time steps and summed up. Usually recurrent neural networks deal with some sort of sequence data like a time series, but in this case the sequence is the same input picture presented multiple times. Since these stimuli have no innate sequence nature, we create a virtual sequence by presenting the network with the same picture for a fixed number of timesteps.
-\subsection{Truncated Backpropagation Through Time}
-Truncated Backpropagation Through Time (TBPTT) is a adapted version of BPTT where the unrolling of the network is limited to a fixed number of time steps.
+\

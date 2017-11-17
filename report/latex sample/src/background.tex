@@ -1,0 +1,79 @@
+\section{Background}
+\subsection{Supervised Learning}
+\newcommand\yhat{\,\hat{y}}
+\newcommand\Yhat{\, \hat{Y}}
+
+The common ground for all further aspects in this work will be supervised learning, which is most generally speaking simply the task of deriving a function from data. This function should be able to map given inputs or data points to some sort of output. In the supervised setting, data is given with an associative label such, that the inferred function is able to map said input data to the correct labels, without explicitly looking at the given labels. The learning algorithm, when deriving said function, therefore has to use patterns and structure among the data points to learn something about the quality of a given data point. Outputs are generally either of a quantitative type e.g. temperature measurements or changes in stock price or of a qualitative type like distinctive types of flowers. Tasks involving the former kinds of outputs are generally referred to as regression problems whereas the tasks involving the latter are generally called classification problems.
+\\We can roughly articulate the supervised learning problem as follows: for a given input $X$, an associated label $Y$ and a function $ \mathbb{F}(X)= \Yhat$, $\mathbb{F}$ makes a good prediction, when $\Yhat$ is close to $Y$. Proximity, in this case, must be defined and can vary depending on the type of data which is present. For a regression problem of e.g. predicting tomorrows temperature, the prediction is better, the more similar the predicted value $\Yhat$ and tomorrows true temperature are, measured by the absolute distance of $|Y-\Yhat|$.
+X in this case could be a vector of meteorologic measurements which are regarded highly predictive of short term weather prognosis.
+\subsubsection{Linear Models}
+Linear Regression has been a staple in statistics and machine learning and remains a very important and widely used tool \cite{hastie01statisticallearning}. As it serves as the basis for a wide range of more complex machine learning algorithms like logistic regression and in some sense even Deep Neural Networks, it serves as a good introduction. The linear model 
+\begin{align*}
+	\mathbb{F}(X) =  \beta + \sum_{i=1}^{|X|}w_ix_i = \yhat
+\end{align*} 
+predicts Y by using a linear combination of all input variables $x_i$ using weights $w_i$. $\beta$ is the intercept of the linear decision boundary, often referred to as the bias. Since in this case we are modeling a scalar value, $\yhat$ is a single value, but can also be N-vector if we're predicting values of higher dimensionality. To get an idea how good our model is performing, we first need to come up with a way of measuring its prediction quality. The sum of squares is a widely used method and sums each squared difference between any predicted value $\yhat_i$ and its corresponding true value $y_i$. We define the sum of squared errors as $E$, a function of our parameters $\mathbb{W}$ which we then can minimize. Since it is a quadratic function, its minimum always exists but does not have to be unique.
+\begin{align*}
+	E(\mathbb{W}) = \frac{1}{2}\sum_{i=1}^{N}(\yhat_i - y_i)^2 =
+	\frac{1}{2}\sum_{i=1}^{N}(\sum_{j=1}^{|X|}(w_ix_i + \beta) - y_i)^2
+\end{align*}
+Minimizing E($\mathbb{W})$ with respect to $\mathbb{W}$ yields:
+\begin{align*}
+	\frac{\delta E}{\delta \mathbb{W}} =  \left(\frac{\delta E}{\delta w_1 },...,\frac{\delta E}{\delta w_n }\right) = \left( \sum_{i=1}^{N}(\yhat_i - y_i)x_1,...,\sum_{i=1}^{N}(\yhat_i - y_i)x_n \right)
+\end{align*}
+
+\subsection{Neuronale Netze}
+Neuronale Netze sind biologisch inspirierte Programmierparadigma, welche es erlauben, iterativ vom Betrachten von Daten zu lernen. Dazu benötigen sie meist kein domänenspezifisches Wissen, sondern "lernen" Strukturen in den betrachteten Daten selbst zu erkennen. Die Grundeinheit solcher Netzwerke sind dabei künstliche Neuronen, die in Schichten angeordnet sind. Ein Neuron erhält eine Eingabe und propagiert sie über eine Verbindung (Synapse) an andere Neuronen weiter. Typischerweise senden Neuronen ihre Eingabe entlang eines Pfades von der Eingabe zur Ausgabe und haben Gewichte, die bestimmen, wie viel des erhaltenen Signals an folgende Neuronen weitergegeben wird.\\
+Die simpelste Form eines Neuronalen Netzes ist ein einfaches Perzeptron, welches 1958 von Frank Rosenblatt in \cite{rosenblatt1958perceptron} vorgestellt wurde. Dieses basiert auf einer McCulloch-Pitts-Zelle, einem rudimentären Modell einer Nervenzelle nach \cite{mcculloch1943logical}, enthält mehrere Eingaben und produziert eine einzige Ausgabe. Perzeptrons können prinzipiell aus mehreren Schichten solcher Zellen bestehen, die in Reihe geschaltet sind. Dabei gibt eine Zelle ihren berechneten Output an ein Neuron der nächsten Schichten weiter. Solche Netzwerke heißen Multi-Layer-Perzeptron, im weiteren beschäftigen wir uns jedoch mit einer einzigen Zelle.
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+	\node[functions] (center) {f};
+	\node[below of=center,font=\scriptsize,text width=4em]{};
+	\node[right of=center] (right) {};
+	\path[draw,->] (center) -- (right);
+	\node[functions,left=3em of center] (left) {$\sum$};
+	\path[draw,->] (left) -- (center);
+	\node[weights,left=3em of left] (2) {$w_3$} -- (2) node[input,left of=2] (l2) {$x_3$};
+	\path[draw,->] (l2) -- (2);
+	\path[draw,->] (2) -- (left);
+	\node[below of=2] (dots) {$\vdots$} -- (dots) node[left of=dots] (ldots) {$\vdots$};
+	\node[weights,below of=dots] (n) {$w_n$} -- (n) node[input,left of=n] (ln) {$x_n$};
+	\path[draw,->] (ln) -- (n);
+	\path[draw,->] (n) -- (left);
+	\node[weights,above of=2] (1) {$w_2$} -- (1) node[input,left of=1] (l1) {$x_2$};
+	\path[draw,->] (l1) -- (1);
+	\path[draw,->] (1) -- (left);
+	\node[weights,above of=1] (0) {$w_1$} -- (0) node[input,left of=0] (l0) {$x_1$};
+	\path[draw,->] (l0) -- (0);
+	\path[draw,->] (0) -- (left);
+	\node[below of=ln,font=\scriptsize] {Input};
+	\node[below of=n,font=\scriptsize] {Gewichte};
+	\end{tikzpicture}
+	\caption{Ein einfaches Perzeptron mit n Eingängen}
+\end{figure}
+Das einfache, in Abbildung 1 dargestellte Perzeptron erhält n Eingänge $x_1,...,x_n \in \mathbb{R}$, die jeweils mit korrespondierenden Gewichten $w_1,...,w_n \in \mathbb{R}$ multipliziert werden. Die Summer der Gewichteten Eingänge wird dann als Argument der Aktivierungsfunktion verwendet. Die Ausgabe des Perzeptron lässt sich als eine Funktion seiner Eingaben wie folgt beschreiben:
+\begin{align*}
+	\mathbb{P}(\boldsymbol{x}, \boldsymbol{w}) = f(\sum_{i=1}^{n}w_ix_i)
+\end{align*}
+mit der Aktivierungsfunktion
+\begin{align*}
+	f(x) = \begin{cases} 1 &\mbox{if } x \geq 0 \\ 
+	0 & \mbox{if } x < 0 \end{cases} 
+\end{align*}
+womit die Ausgabe als Zugehörigkeit zu einer klasse, entweder 0 oder 1 zu interpretieren ist.
+\subsection{Convolutional Neural Networks}
+\subsection{Recurrent Neural Networks}
+\subsection{Unrolling Recurrent Netowrks}
+\subsection{Backpropagation}
+Backpropagation is a widely used technique to train neural networks. It is, in fact, the algorithm that made training deep neural networks tractable in the first place. While being originally introduced in the 1970's it has not been adapted until David Rumelheart, Geoffrey Hinton and Ronald Williams drew a lot of attention to it in their famous 1986 Paper \cite{rumelhart1988learning}. At the core of Backpropagation stand partial derivatives like $\frac{\delta C}{\delta w}$ of a cost function C with respect to a weight w. This gradient expresses, at what rate C changes if we tune w. Knowing how the error of the network behaves when changing a parameter can be very helpful, since we then can adjust it in a way, such that our total error decreases.
+In order to minimize our cost function we therefore have to compute the partial derivatives of the networks cost function with regard to every variable in the network i.e. every weight and bias. We then use those gradients to move "downwards" on our cost function i.e. adding a small positive value to our weight or bias, if the gradient is negative and vice versa adding a small negative value, if the gradient is positive.
+\\
+\begin{tikzpicture}[>=stealth, every node/.style={circle, draw, minimum size=0.75cm}]
+\graph [tree layout, grow=down, fresh nodes, level distance=0.5in, sibling distance=0.5in]
+{
+	g = e * f <- { 
+		e = a + b <- { a, b },
+		f = 3 * c <- { c }
+	} 
+};
+\end{tikzpicture}
