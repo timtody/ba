@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238)  (format=lualatex 2017.10.23)  17 NOV 2017 19:35
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238)  (format=lualatex 2017.10.23)  23 NOV 2017 17:52
  restricted \write18 enabled.
 **Hauptdatei.tex
 (./Hauptdatei.tex
@@ -869,6 +869,14 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 (/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen178
+\WF@size=\dimen179
+\c@WF@wrappedlines=\count141
+\WF@box=\box51
+\WF@everypar=\toks42
+Package: wrapfig 2003/01/31  v 3.6
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 )
@@ -881,7 +889,7 @@ Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX
 
 (/usr/share/texlive/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
 Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
-\@catcodetablestackcnt=\count141
+\@catcodetablestackcnt=\count142
 )
 \CatcodeTableOther=\catcodetable5
 \CatcodeTableExpl=\catcodetable6
@@ -891,12 +899,12 @@ Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
 Package pgfplots info on input line 123: Initializing with LUA version Lua 5.2
 pgfplots.lua: loading complementary lua code for your pgf version...
 \pgfplots@luabackend@table=\catcodetable7
-\t@pgfplots@toka=\toks42
-\t@pgfplots@tokb=\toks43
-\t@pgfplots@tokc=\toks44
-\pgfplots@tmpa=\dimen178
-\c@pgfplots@coordindex=\count142
-\c@pgfplots@scanlineindex=\count143
+\t@pgfplots@toka=\toks43
+\t@pgfplots@tokb=\toks44
+\t@pgfplots@tokc=\toks45
+\pgfplots@tmpa=\dimen180
+\c@pgfplots@coordindex=\count143
+\c@pgfplots@scanlineindex=\count144
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
 .tex))
@@ -912,7 +920,7 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 gfsupp_pgflibraryfpu.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count144
+\c@pgfmathroundto@lastzeros=\count145
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/luamath/pgflibraryluam
 ath.code.tex)
@@ -926,14 +934,14 @@ tructure.code.tex)
 tructureext.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
 .code.tex
-\c@pgfplotsarray@tmp=\count145
+\c@pgfplotsarray@tmp=\count146
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
 x.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
 d.code.tex
-\c@pgfplotstable@counta=\count146
-\t@pgfplotstable@a=\toks45
+\c@pgfplotstable@counta=\count147
+\t@pgfplotstable@a=\toks46
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
 .code.tex)
@@ -945,7 +953,7 @@ de.tex))
 .tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
 fshading.code.tex
-\c@pgfplotslibrarysurf@no=\count147
+\c@pgfplotslibrarysurf@no=\count148
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
 shading.pgfsys-pdftex.def)))
@@ -972,16 +980,16 @@ e.tex)
 zlibrarydecorations.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
 e.tex
-\pgfdecoratedcompleteddistance=\dimen179
-\pgfdecoratedremainingdistance=\dimen180
-\pgfdecoratedinputsegmentcompleteddistance=\dimen181
-\pgfdecoratedinputsegmentremainingdistance=\dimen182
-\pgf@decorate@distancetomove=\dimen183
-\pgf@decorate@repeatstate=\count148
-\pgfdecorationsegmentamplitude=\dimen184
-\pgfdecorationsegmentlength=\dimen185
+\pgfdecoratedcompleteddistance=\dimen181
+\pgfdecoratedremainingdistance=\dimen182
+\pgfdecoratedinputsegmentcompleteddistance=\dimen183
+\pgfdecoratedinputsegmentremainingdistance=\dimen184
+\pgf@decorate@distancetomove=\dimen185
+\pgf@decorate@repeatstate=\count149
+\pgfdecorationsegmentamplitude=\dimen186
+\pgfdecorationsegmentlength=\dimen187
 )
-\tikz@lib@dec@box=\box51
+\tikz@lib@dec@box=\box52
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarydecorations.pathmorphing.code.tex
@@ -991,13 +999,13 @@ decorations.pathmorphing.code.tex))
 zlibrarydecorations.pathreplacing.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count149
-\pgfplots@xmin@reg=\dimen186
-\pgfplots@xmax@reg=\dimen187
-\pgfplots@ymin@reg=\dimen188
-\pgfplots@ymax@reg=\dimen189
-\pgfplots@zmin@reg=\dimen190
-\pgfplots@zmax@reg=\dimen191
+\pgfplots@numplots=\count150
+\pgfplots@xmin@reg=\dimen188
+\pgfplots@xmax@reg=\dimen189
+\pgfplots@ymin@reg=\dimen190
+\pgfplots@ymax@reg=\dimen191
+\pgfplots@zmin@reg=\dimen192
+\pgfplots@zmax@reg=\dimen193
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryplotmarks.code.tex
@@ -1007,24 +1015,24 @@ File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 de.tex
 File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count150
-\lst@gtempboxa=\box52
-\lst@token=\toks46
-\lst@length=\count151
-\lst@currlwidth=\dimen192
-\lst@column=\count152
-\lst@pos=\count153
-\lst@lostspace=\dimen193
-\lst@width=\dimen194
-\lst@newlines=\count154
-\lst@lineno=\count155
-\lst@maxwidth=\dimen195
+\lst@mode=\count151
+\lst@gtempboxa=\box53
+\lst@token=\toks47
+\lst@length=\count152
+\lst@currlwidth=\dimen194
+\lst@column=\count153
+\lst@pos=\count154
+\lst@lostspace=\dimen195
+\lst@width=\dimen196
+\lst@newlines=\count155
+\lst@lineno=\count156
+\lst@maxwidth=\dimen197
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count156
-\lst@skipnumbers=\count157
-\lst@framebox=\box53
+\c@lstnumber=\count157
+\lst@skipnumbers=\count158
+\lst@framebox=\box54
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -1041,8 +1049,8 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 Writing index file Hauptdatei.idx
 (/usr/share/texlive/texmf-dist/tex/latex/nomencl/nomencl.sty
 Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
-\nomlabelwidth=\dimen196
-\nom@tempdim=\dimen197
+\nomlabelwidth=\dimen198
+\nom@tempdim=\dimen199
 \nomitemsep=\skip67
 )
 \@nomenclaturefile=\write6
@@ -1054,39 +1062,39 @@ Writing nomenclature file Hauptdatei.nlo
 (./erklaerung.aux))
 \openout1 = Hauptdatei.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 140.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 141.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count158
-\scratchdimen=\dimen198
-\scratchbox=\box54
-\nofMPsegments=\count159
-\nofMParguments=\count160
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count161
-\MPscratchDim=\dimen199
-\MPnumerator=\count162
-\makeMPintoPDFobject=\count163
-\everyMPtoPDFconversion=\toks48
+\scratchcounter=\count159
+\scratchdimen=\dimen256
+\scratchbox=\box55
+\nofMPsegments=\count160
+\nofMParguments=\count161
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count162
+\MPscratchDim=\dimen257
+\MPnumerator=\count163
+\makeMPintoPDFobject=\count164
+\everyMPtoPDFconversion=\toks49
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1136,19 +1144,19 @@ ABD: EveryShipout initializing macros
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring OFF on input line 140.
+\AtBeginShipoutBox=\box56
+Package hyperref Info: Link coloring OFF on input line 141.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count164
+\c@section@level=\count165
 )
-LaTeX Info: Redefining \ref on input line 140.
-LaTeX Info: Redefining \pageref on input line 140.
-LaTeX Info: Redefining \nameref on input line 140.
+LaTeX Info: Redefining \ref on input line 141.
+LaTeX Info: Redefining \pageref on input line 141.
+LaTeX Info: Redefining \nameref on input line 141.
 
 (./Hauptdatei.out) (./Hauptdatei.out)
 \@outlinefile=\write7
@@ -1159,11 +1167,11 @@ LaTeX Info: Redefining \nameref on input line 140.
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable ti
 ck labels; missing features). Consider writing \pgfplotsset{compat=1.13} into yo
 ur preamble.
- on input line 140.
+ on input line 141.
 
-\c@lstlisting=\count165
+\c@lstlisting=\count166
 (./latex_einstellungen/trennung.tex)
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 151.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 152.
  (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1172,13 +1180,13 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ]
 \openout2 = latex_einstellungen/deckblatt.aux
  (./latex_einstellungen/deckblatt.tex
-<abb/logo1.png, id=128, 1073.611pt x 264.187pt>
+<abb/logo1.png, id=152, 1073.611pt x 264.187pt>
 File: abb/logo1.png Graphic file (type png)
  <use abb/logo1.png>
 Package pdftex.def Info: abb/logo1.png used on input line 22.
 (pdftex.def)             Requested size: 264.61333pt x 65.11134pt.
 
-<abb/logo2.png, id=129, 1073.611pt x 264.187pt>
+<abb/logo2.png, id=153, 1073.611pt x 264.187pt>
 File: abb/logo2.png Graphic file (type png)
  <use abb/logo2.png>
 Package pdftex.def Info: abb/logo2.png used on input line 24.
@@ -1238,7 +1246,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 \openout8 = Hauptdatei.toc
 
-(./Hauptdatei.lof)
+(./Hauptdatei.lof [5
+
+]
+Overfull \hbox (13.0894pt too wide) in paragraph at lines 8--8
+ [][][] [][]\T1/lmr/m/n/12 Ein RNN wird über n Zeit-schrit-te ent-fal-tet. Die
+ Netz-wer-k-ein-ga-ben $\OML/lmm/m/it/12 x[]; :::; x[]$ 
+ []
+
+)
 \tf@lof=\write9
 
 \openout9 = Hauptdatei.lof
@@ -1258,7 +1274,7 @@ Class scrartcl Warning: \float@listhead detected!
 (scrartcl)              Loading of package `scrhack' may help to
 (scrartcl)              avoid this warning, if you are using a
 (scrartcl)              a package that still implements the
-(scrartcl)              deprecated \float@listhead interface  on input line 214.
+(scrartcl)              deprecated \float@listhead interface  on input line 215.
 
 
 (./Hauptdatei.lol)
@@ -1266,39 +1282,117 @@ Class scrartcl Warning: \float@listhead detected!
 
 \openout11 = Hauptdatei.lol
  (./latex_einstellungen/abkuezungen/abkuerzungen.tex)
-(./Hauptdatei.nls) [5
+(./Hauptdatei.nls) [6] (./1_einleitung.tex) (./background.tex [7]
+<abb/neuron.png, id=256, 1204.5pt x 647.41875pt>
+File: abb/neuron.png Graphic file (type png)
+ <use abb/neuron.png>
+Package pdftex.def Info: abb/neuron.png used on input line 30.
+(pdftex.def)             Requested size: 154.35889pt x 82.96217pt.
 
-] [6] (./1_einleitung.tex) (./background.tex [7]
-Overfull \hbox (1.39938pt too wide) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[][][]\T1/lmr/m/n/12 Sche-ma-ti-sche Dar-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/12 stel-lung ei-nes
+ []
+
+[8] <abb/ap.jpg, id=266, 269.808pt x 201.3924pt>
+File: abb/ap.jpg Graphic file (type jpg)
+ <use abb/ap.jpg>
+Package pdftex.def Info: abb/ap.jpg used on input line 36.
+(pdftex.def)             Requested size: 154.35889pt x 115.22198pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[][][]\T1/lmr/m/n/12 Span-nungs-än-de-
+ []
+
+<abb/synapse.png, id=267, 2007.5pt x 1621.05624pt>
+File: abb/synapse.png Graphic file (type png)
+ <use abb/synapse.png>
+Package pdftex.def Info: abb/synapse.png used on input line 42.
+(pdftex.def)             Requested size: 154.35889pt x 124.64114pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+[][][]\T1/lmr/m/n/12 Ab-bil-dung ei-ner
+ []
+
+[9<./abb/neuron.png><./abb/ap.jpg>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 47.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 47.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 47.
+
+Overfull \hbox (1.39938pt too wide) in paragraph at lines 58--58
  [][][][][]$\OML/lmm/m/it/12 w[]$ 
  []
 
 
-Overfull \hbox (2.30685pt too wide) in paragraph at lines 40--40
+Overfull \hbox (2.30685pt too wide) in paragraph at lines 62--62
  [][][][][]$\OML/lmm/m/it/12 w[]$ 
  []
 
 
-Overfull \hbox (0.58467pt too wide) in paragraph at lines 40--40
+Overfull \hbox (0.58467pt too wide) in paragraph at lines 62--62
  [][][][][]$\OML/lmm/m/it/12 x[]$ 
  []
 
 
-Overfull \hbox (1.39938pt too wide) in paragraph at lines 43--43
+Overfull \hbox (1.39938pt too wide) in paragraph at lines 65--65
  [][][][][]$\OML/lmm/m/it/12 w[]$ 
  []
 
 
-Overfull \hbox (1.39938pt too wide) in paragraph at lines 46--46
+Overfull \hbox (1.39938pt too wide) in paragraph at lines 68--68
  [][][][][]$\OML/lmm/m/it/12 w[]$ 
  []
 
-[8]) [9] (./2_kap1.tex [10]
+[10<./abb/synapse.png>]
+<abb/classification.png, id=294, 375.4025pt x 140.02313pt>
+File: abb/classification.png Graphic file (type png)
+
+<use abb/classification.png>
+Package pdftex.def Info: abb/classification.png used on input line 90.
+(pdftex.def)             Requested size: 308.71106pt x 115.15514pt.
+ [11] <abb/cnnwp.png, id=304, 1043.9pt x 321.2pt>
+File: abb/cnnwp.png Graphic file (type png)
+
+<use abb/cnnwp.png>
+Package pdftex.def Info: abb/cnnwp.png used on input line 105.
+(pdftex.def)             Requested size: 308.71106pt x 94.98843pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12<./abb/classification.png>] [13<./abb/cnnwp.png>]
+<abb/convolution.png, id=323, 171.64125pt x 282.05376pt>
+File: abb/convolution.png Graphic file (type png)
+
+<use abb/convolution.png>
+Package pdftex.def Info: abb/convolution.png used on input line 113.
+(pdftex.def)             Requested size: 154.35889pt x 253.65234pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--114
+[][][]\T1/lmr/m/n/12 Ver-schie-de-ne
+ []
+
+[14
+
+<./abb/convolution.png>] <abb/rnn.png, id=330, 552.0625pt x 223.83624pt>
+File: abb/rnn.png Graphic file (type png)
+
+<use abb/rnn.png>
+Package pdftex.def Info: abb/rnn.png used on input line 129.
+(pdftex.def)             Requested size: 308.71106pt x 125.17325pt.
+ [15<./abb/rnn.png>]) (./2_kap1.tex [16]
 Underfull \hbox (badness 10000) in paragraph at lines 10--12
 
  []
 
-[11] [12]) (./3_kap2.tex
+[17] [18]) (./3_kap2.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--12
 
  []
@@ -1308,78 +1402,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--12
 
  []
 
-) (./7_ausblick.tex [13]) (./8_fazit.tex) [14] (./Hauptdatei.bbl
-Underfull \hbox (badness 4927) in paragraph at lines 29--35
+) (./7_ausblick.tex [19]) (./8_fazit.tex) [20] (./Hauptdatei.bbl
+Underfull \hbox (badness 3803) in paragraph at lines 35--41
 [][]\T1/lmr/m/sc/12 Kriz-hevs-ky\T1/lmr/m/n/12 , Alex ; \T1/lmr/m/sc/12 Suts-ke
 -ver\T1/lmr/m/n/12 , Ilya ; \T1/lmr/m/sc/12 Hin-ton\T1/lmr/m/n/12 , Ge-off-rey 
 E.:
  []
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 29--35
+Underfull \hbox (badness 1466) in paragraph at lines 35--41
 \T1/lmr/m/n/12 Image-Net Clas-si-fi-ca-ti-on with De-ep Con-vo-lu-tio-nal Neu-r
 al Net-works.
  []
 
+) [21
 
-Underfull \hbox (badness 1377) in paragraph at lines 29--35
-\T1/lmr/m/n/12 (2012), 1097--1105.  []$\T1/lmtt/m/n/12 http : / / papers . nips
- . cc / paper / 4824 -[] imagenet -[]
- []
-
-) [15
-
-] (./anhang/anhang.tex) [16]
+] (./anhang/anhang.tex) [22]
 \openout2 = erklaerung.aux
  (./erklaerung.tex
 Overfull \hbox (45.09023pt too wide) detected at line 23
 []
  []
 
-) [17
+) [23
 
-] [18
+] [24
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 285.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 285.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
  (./Hauptdatei.aux (./latex_einstellungen/deckblatt.aux)
 (./abstract.aux) (./erklaerung.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 285.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 285.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
 Package rerunfilecheck Info: File `Hauptdatei.out' has not changed.
-(rerunfilecheck)             Checksum: 0631F35B3D3CD0A1EEDBCF0750B0FEA3;1973.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 285.
+(rerunfilecheck)             Checksum: 28B4E40E229A513118096092357DACF7;2430.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
 )
 
 Here is how much of LuaTeX's memory you used:
- 34637 strings out of 495004
+ 34876 strings out of 495004
  125016,1144653 words of node,token memory allocated
- 426 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 50 glue_spec, 3 action, 1 write nod
+ 461 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 50 glue_spec, 6 action, 1 write nod
 es
-   avail lists: 1:9,2:39,3:627,4:1306,5:256,6:2904,7:278,8:36,9:388,10:401
- 36729 multiletter control sequences out of 65536+600000
- 57 fonts using 2251531 bytes
+   avail lists: 1:10,2:39,3:502,4:1073,5:238,6:3429,7:359,8:40,9:318,10:512
+ 36865 multiletter control sequences out of 65536+600000
+ 84 fonts using 3311935 bytes
  64i,17n,81p,1790b,2081s stack positions out of 5000i,500n,10000p,200000b,100000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips
 /lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-math
 ex.enc}<</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb><</usr/share/texmf/fo
-nts/type1/public/lm/lmcsc10.pfb><</usr/share/texmf/fonts/type1/public/lm/lmex10.
-pfb><</usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb><</usr/share/texmf/fonts
-/type1/public/lm/lmmi8.pfb><</usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb>
-<</usr/share/texmf/fonts/type1/public/lm/lmr12.pfb><</usr/share/texmf/fonts/type
-1/public/lm/lmr17.pfb><</usr/share/texmf/fonts/type1/public/lm/lmr8.pfb><</usr/s
-hare/texmf/fonts/type1/public/lm/lmri12.pfb><</usr/share/texmf/fonts/type1/publi
-c/lm/lmssbx10.pfb><</usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb><</usr/sha
-re/texmf/fonts/type1/public/lm/lmsy6.pfb><</usr/share/texmf/fonts/type1/public/l
-m/lmsy8.pfb><</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb><</usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Hauptdatei.pdf (18 pages, 294968 bytes).
+nts/type1/public/lm/lmbxi10.pfb><</usr/share/texmf/fonts/type1/public/lm/lmcsc10
+.pfb><</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb><</usr/share/texmf/font
+s/type1/public/lm/lmmi10.pfb><</usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb
+><</usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb><</usr/share/texmf/fonts/typ
+e1/public/lm/lmmi7.pfb><</usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb><</usr
+/share/texmf/fonts/type1/public/lm/lmmib10.pfb><</usr/share/texmf/fonts/type1/pu
+blic/lm/lmr10.pfb><</usr/share/texmf/fonts/type1/public/lm/lmr12.pfb><</usr/shar
+e/texmf/fonts/type1/public/lm/lmr17.pfb><</usr/share/texmf/fonts/type1/public/lm
+/lmr5.pfb><</usr/share/texmf/fonts/type1/public/lm/lmr7.pfb><</usr/share/texmf/f
+onts/type1/public/lm/lmr8.pfb><</usr/share/texmf/fonts/type1/public/lm/lmri12.pf
+b><</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb><</usr/share/texmf/fonts
+/type1/public/lm/lmsy10.pfb><</usr/share/texmf/fonts/type1/public/lm/lmsy5.pfb><
+</usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb><</usr/share/texmf/fonts/type1
+/public/lm/lmsy7.pfb><</usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb><</usr/s
+hare/texmf/fonts/type1/public/lm/lmtt12.pfb><</usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Hauptdatei.pdf (24 pages, 1402556 bytes).
 
-PDF statistics: 347 PDF objects out of 1000 (max. 8388607)
- 303 compressed objects within 4 object streams
- 60 named destinations out of 1000 (max. 131072)
- 248 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 488 PDF objects out of 1000 (max. 8388607)
+ 417 compressed objects within 5 object streams
+ 87 named destinations out of 1000 (max. 131072)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
 

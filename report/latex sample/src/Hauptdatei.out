@@ -2,28 +2,34 @@
 \BOOKMARK [1][-]{section*.5}{Tabellenverzeichnis}{}% 2
 \BOOKMARK [1][-]{section*.6}{Listingverzeichnis}{}% 3
 \BOOKMARK [1][-]{section*.7}{Abkürzungsverzeichnis}{}% 4
-\BOOKMARK [1][-]{section.1}{1 Introduction}{}% 5
-\BOOKMARK [1][-]{section.2}{2 Background}{}% 6
-\BOOKMARK [2][-]{subsection.2.1}{2.1 Supervised Learning}{section.2}% 7
-\BOOKMARK [3][-]{subsubsection.2.1.1}{2.1.1 Linear Models}{subsection.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.2}{2.2 Neuronale Netze}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.3}{2.3 Convolutional Neural Networks}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.4}{2.4 Recurrent Neural Networks}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.5}{2.5 Unrolling Recurrent Netowrks}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.6}{2.6 Backpropagation}{section.2}% 13
-\BOOKMARK [1][-]{section.3}{3 Materials and Methods}{}% 14
-\BOOKMARK [2][-]{subsection.3.1}{3.1 Generatives Modell für Stimuli}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.2}{3.2 Models}{section.3}% 16
-\BOOKMARK [3][-]{subsubsection.3.2.1}{3.2.1 Implementation}{subsection.3.2}% 17
-\BOOKMARK [3][-]{subsubsection.3.2.2}{3.2.2 Recurrent Convolution Layers}{subsection.3.2}% 18
-\BOOKMARK [2][-]{subsection.3.3}{3.3 Training}{section.3}% 19
-\BOOKMARK [3][-]{subsubsection.3.3.1}{3.3.1 Error Measurement}{subsection.3.3}% 20
-\BOOKMARK [3][-]{subsubsection.3.3.2}{3.3.2 Backpropagation Through Time}{subsection.3.3}% 21
-\BOOKMARK [2][-]{subsection.3.4}{3.4 Truncated Backpropagation Through Time}{section.3}% 22
-\BOOKMARK [1][-]{section.4}{4 Ergebnisse}{}% 23
-\BOOKMARK [2][-]{subsection.4.1}{4.1 Performance changes under varying levels of occlusion}{section.4}% 24
-\BOOKMARK [1][-]{section.5}{5 Diskussion}{}% 25
-\BOOKMARK [1][-]{section.6}{6 Danksagung}{}% 26
-\BOOKMARK [1][-]{section.6}{Literaturverzeichnis}{}% 27
-\BOOKMARK [1][-]{section*.8}{Anhang}{}% 28
-\BOOKMARK [1][-]{section*.9}{Eidesstattliche Erklärung}{}% 29
+\BOOKMARK [1][-]{section.1}{1 Einleitung}{}% 5
+\BOOKMARK [1][-]{section.2}{2 Grundlagen}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{2.1 Überwachtes Lernen}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.1}{2.1.1 Lineare Modelle}{subsection.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.2}{2.2 Biologischer Hintergrund}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{2.3 Neuronen}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{2.4 Neuronale Netze}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.5}{2.5 Convolutional Neural Networks}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.5.1}{2.5.1 Architektur}{subsection.2.5}% 13
+\BOOKMARK [3][-]{subsubsection.2.5.2}{2.5.2 FaltungsLayer}{subsection.2.5}% 14
+\BOOKMARK [3][-]{subsubsection.2.5.3}{2.5.3 Pooling-Layer}{subsection.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.6}{2.6 Rekurrente Neuronale Netze}{section.2}% 16
+\BOOKMARK [2][-]{subsection.2.7}{2.7 Approximation von Rekursion}{section.2}% 17
+\BOOKMARK [2][-]{subsection.2.8}{2.8 Backpropagation}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.9}{2.9 Backpropagation Through Time}{section.2}% 19
+\BOOKMARK [1][-]{section.3}{3 Materials and Methods}{}% 20
+\BOOKMARK [2][-]{subsection.3.1}{3.1 Generatives Modell für Stimuli}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.2}{3.2 Models}{section.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.1}{3.2.1 Implementation}{subsection.3.2}% 23
+\BOOKMARK [3][-]{subsubsection.3.2.2}{3.2.2 Recurrent Convolution Layers}{subsection.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.3}{3.3 Training}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.3.1}{3.3.1 Error Measurement}{subsection.3.3}% 26
+\BOOKMARK [3][-]{subsubsection.3.3.2}{3.3.2 Backpropagation Through Time}{subsection.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.4}{3.4 Truncated Backpropagation Through Time}{section.3}% 28
+\BOOKMARK [1][-]{section.4}{4 Ergebnisse}{}% 29
+\BOOKMARK [2][-]{subsection.4.1}{4.1 Performance changes under varying levels of occlusion}{section.4}% 30
+\BOOKMARK [1][-]{section.5}{5 Diskussion}{}% 31
+\BOOKMARK [1][-]{section.6}{6 Danksagung}{}% 32
+\BOOKMARK [1][-]{section.6}{Literaturverzeichnis}{}% 33
+\BOOKMARK [1][-]{section*.8}{Anhang}{}% 34
+\BOOKMARK [1][-]{section*.9}{Eidesstattliche Erklärung}{}% 35

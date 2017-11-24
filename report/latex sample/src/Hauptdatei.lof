@@ -1,1 +1,8 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Ein einfaches Perzeptron mit n Eingängen}}{9}{figure.1}
+\contentsline {figure}{\numberline {1}{\ignorespaces Schematische Darstellung eines Neurons}}{9}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Spannungsänderung während eines Aktionspotentials}}{9}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Abbildung einer Synapse}}{10}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Ein einfaches Perzeptron mit n Eingängen}}{11}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Ein CNN klassifiziert mehrere Objekte pro Bild korrekt mit hoher Konfidenz}}{12}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Beispielhafte Architektur eines CNNs. Subsampling steht hierbei für Pooling-Layer.}}{13}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Verschiedene Faltungskernel}}{14}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Ein RNN wird über n Zeitschritte entfaltet. Die Netzwerkeingaben $x_1,..., x_n$ müssen hierbei alle zur Verfügung stehen.}}{15}{figure.8}
